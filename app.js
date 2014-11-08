@@ -8,9 +8,9 @@ var RedisStore = require('connect-redis')(session);
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var flash = require('connect-flash');
-
 var logger = require('./logger');
 var morgan = require('morgan');
+var lessMiddleware = require('less-middleware');
 
 process.on('uncaughtException', function (err) {
   logger.error(err.stack);
@@ -45,6 +45,9 @@ function _startWorker(){
   };
 
   app.use(morgan('combined',{ "stream": winstonStream}));
+
+  app.use(lessMiddleware(__dirname + '/public', {force: true}));
+  app.use(express.static(__dirname + '/public'));
 
   app.use(session({
     store: new RedisStore(),

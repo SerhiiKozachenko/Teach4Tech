@@ -3,6 +3,7 @@ extends ../layout
 block content
   h1 #{message}
   h4 Online users #{online}
+  h3 #{process.env.NODE_ENV}
   a(href='/blog') My blog 
   &nbsp;
   a(href='/about') About me
