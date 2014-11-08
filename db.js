@@ -2,12 +2,12 @@ var logger = require('./logger');
 var mongoose = require('mongoose');
 
 module.exports = function(onDbConnected){
-  logger.info('Connecting to blog db');
-  var conn = mongoose.connect('mongodb://localhost/blog', function(err){
+  logger.info('Connecting to db');
+  var conn = mongoose.connect('mongodb://localhost/teach4tech', function(err){
   	if (err){
-      logger.error('Connection failed to blog db');
+      logger.error('Connection to db failed');
   	} else {
-      logger.info('Connected to blog db');
+      logger.info('Connected to db');
       onDbConnected();
   	}
   });
