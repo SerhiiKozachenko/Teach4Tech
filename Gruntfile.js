@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 
     less: {
        prod: {
-           files: {"public/tmp/<%= pkg.name %>.<%= pkg.version %>.css": "public/styles/main.less"}
+           files: {"public/styles/main.css": "public/styles/main.less"}
        }
     },
 
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
       },
       build: {
         files: {
-          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.js': ['public/js/*.js', 'public/js/**/*.js']
+          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.js': ['public/tmp/combined.js']
         }
       }
     },
@@ -32,19 +32,46 @@ module.exports = function(grunt) {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         files: {
-          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.css': ['public/tmp/<%= pkg.name %>.<%= pkg.version %>.css']
+          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.css': ['public/tmp/combined.css']
         }
       }
-    }
+    },
+
+    concatBlocks: {
+        html: 'views/layout.jade',
+        root: 'public'
+    },
+
+
   });
 
-  // Load the plugin that provides the "uglify" task.
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-concat-blocks');
+  
 
   // Default task(s).
-  grunt.registerTask('default', ['clean', 'less:prod', 'uglify', 'cssmin', 'clean:tmp']);
+  grunt.registerTask('default', ['clean', 'less:prod', 'concatBlocks', 'concat', 'uglify', 'cssmin', 'clean:tmp']);
+
+  grunt.registerTask('build', [
+    'useminPrepare',
+    'concat',
+    'cssmin',
+    'uglify',
+    'usemin'
+  ]);
+
+  grunt.registerTask('t', [
+    'useref',
+    'concat'
+  ]);
+
+grunt.registerTask('m', [
+    'concatBlocks',
+    'concat'
+  ]);
 
 };

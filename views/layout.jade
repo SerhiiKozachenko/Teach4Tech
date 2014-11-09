@@ -5,7 +5,10 @@ html
      -if (process.env.NODE_ENV == 'production')
         link(type="text/css", rel="stylesheet", href="dist/Teach4Tech.0.0.1.min.css")
      -else 
+        <!-- build:css /tmp/combined.css -->
+        link(type="text/css", rel="stylesheet", href="components/bootstrap/dist/css/bootstrap.css")
         link(type="text/css", rel="stylesheet", href="styles/main.css")
+        <!-- endbuild -->
   body
     block content
     
@@ -13,4 +16,8 @@ html
      -if (process.env.NODE_ENV == 'production')
         script(src="dist/Teach4Tech.0.0.1.min.js")
      -else 
+        <!-- build:js /tmp/combined.js -->
+        script(src="components/jquery/dist/jquery.js")
+        script(src="components/bootstrap/dist/js/bootstrap.js")
         script(src="js/main.js")
+        <!-- endbuild -->

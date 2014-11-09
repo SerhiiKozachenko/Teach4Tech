@@ -1,5 +1,9 @@
-# Temp
-public/temp
+# Temp and dist
+public/tmp
+public/dist
+
+# Bower components
+public/components
 
 # Logs
 logs

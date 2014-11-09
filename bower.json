@@ -1,0 +1,31 @@
+{
+  "name": "Teach4Tech",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Teach4Tech/Teach4Tech",
+  "description": "Public web site",
+  "main": "app.js",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "Teach",
+    "Tech",
+    "Video"
+  ],
+  "authors": [
+    "Sergey Kozachenko"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.0"
+  }
+}
