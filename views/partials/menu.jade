@@ -1,0 +1,51 @@
+.navbar.navbar-default.navbar-fixed-top
+    .container
+        .navbar-header
+          a.navbar-brand(href='../') Teach4Tech
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+        #navbar-main.navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li.dropdown
+              a#themes.dropdown-toggle(data-toggle='dropdown', href='#')
+                | Уроки
+                span.caret
+              ul.dropdown-menu(aria-labelledby='themes')
+                li
+                  a(href='../default/') Все
+                li.divider
+                li
+                  a(href='../cerulean/') JavaScript
+                li
+                  a(href='../cosmo/') .Net
+                li
+                  a(href='../cyborg/') Node.js
+                li
+                  a(href='../darkly/') AngularJS
+                li
+                  a(href='../flatly/') ReactJS
+            li
+              a(href='../blog/') Статьи
+            li
+              a(href='../course/') Курсы
+            li
+              a(href='../about/') О нас
+          ul.nav.navbar-nav.navbar-right
+            li
+              ul.nav.navbar-nav
+                li.dropdown
+                  a#themes.dropdown-toggle(data-toggle='dropdown', href='#')
+                    | #{userName}
+                    span.caret
+                   ul.dropdown-menu(aria-labelledby='themes')
+                     li
+                       a(href='../default/') Мой профиль
+                     li
+                       a(href='../default/') Мои курсы
+                     li.divider
+                     li
+                       a(href='../cerulean/') Выход
+               
+             

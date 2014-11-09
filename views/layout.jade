@@ -10,7 +10,9 @@ html
         link(type="text/css", rel="stylesheet", href="/styles/main.css")
         <!-- endbuild -->
   body
-    block content
+    include partials/menu
+    #main_wrapper.container
+      block content
     
     block scripts
      -if (process.env.NODE_ENV == 'production')
