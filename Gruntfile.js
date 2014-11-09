@@ -56,22 +56,4 @@ module.exports = function(grunt) {
   // Default task(s).
   grunt.registerTask('default', ['clean', 'less:prod', 'concatBlocks', 'concat', 'uglify', 'cssmin', 'clean:tmp']);
 
-  grunt.registerTask('build', [
-    'useminPrepare',
-    'concat',
-    'cssmin',
-    'uglify',
-    'usemin'
-  ]);
-
-  grunt.registerTask('t', [
-    'useref',
-    'concat'
-  ]);
-
-grunt.registerTask('m', [
-    'concatBlocks',
-    'concat'
-  ]);
-
 };
