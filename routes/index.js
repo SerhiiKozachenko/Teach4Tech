@@ -3,6 +3,7 @@ var home = require('./home');
 var log = require('./log');
 var blog = require('./blog');
 var auth = require('./auth');
+var admin = require('./admin');
 
 module.exports = function(app){
   
@@ -12,6 +13,7 @@ module.exports = function(app){
   app.use('/', home);
   app.use('/logs', log.routes);
   app.use('/blog', blog);
+  app.use('/admin', admin);
 
   app.use(log.console);
   app.use(log.xhr);

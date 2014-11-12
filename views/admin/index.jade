@@ -1,0 +1,24 @@
+extends ../layout
+
+block scripts
+  script(src='/js/admin.js')
+
+
+block content
+  h1 Админка
+  a(href='/admin/uploadVideo') Загрузить новое видео
+
+  h1 BinaryJS File Upload and Streaming
+  section#main
+    fieldset
+      legend Drag n Drop
+      aside#upload-box
+        article#progress Drop file here
+    fieldset
+      legend Select a Link
+      nav#list.left
+    fieldset
+      legend Play the Video
+      section.left
+        video#video
+

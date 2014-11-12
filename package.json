@@ -24,7 +24,8 @@
     "passport": "^0.2.1",
     "bcrypt": "^0.8.0",
     "connect-flash": "^0.1.1",
-    "less-middleware": "^1.0.4"
+    "less-middleware": "^1.0.4",
+    "binaryjs": "^0.2.1"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

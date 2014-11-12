@@ -14,12 +14,14 @@ html
     #main_wrapper.container
       block content
     
-    block scripts
+    
      -if (process.env.NODE_ENV == 'production')
         script(src="/dist/Teach4Tech.0.0.1.min.js")
      -else 
         <!-- build:js /tmp/combined.js -->
         script(src="/components/jquery/dist/jquery.js")
         script(src="/components/bootstrap/dist/js/bootstrap.js")
+        script(src='/vendor/binary.js')
         script(src="/js/main.js")
         <!-- endbuild -->
+        block scripts

@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  a(href='/admin') Назад
+  br
+  br
+  form(action='/admin/uploadVideo', method='POST')
+    input(type='hidden', name='id', value=video.id)
+    label(for='title') Название: 
+    input(type='text', name='title', value=video.title)
+    br
+    label(for='length') Длина: 
+    input(type='text', name='length', value=video.length)
+    br
+    button(type='submit') Сохранить
