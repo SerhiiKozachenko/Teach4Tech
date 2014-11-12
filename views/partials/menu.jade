@@ -36,16 +36,21 @@
             li
               ul.nav.navbar-nav
                 li.dropdown
-                  a#themes.dropdown-toggle(data-toggle='dropdown', href='#')
-                    | #{userName}
-                    span.caret
-                   ul.dropdown-menu(aria-labelledby='themes')
-                     li
-                       a(href='../default/') Мой профиль
-                     li
-                       a(href='../default/') Мои курсы
-                     li.divider
-                     li
-                       a(href='../cerulean/') Выход
+                  -if (isLoggedIn) 
+                    a.dropdown-toggle(data-toggle='dropdown', href='#')
+                      | #{userName}
+                      span.caret
+                     ul.dropdown-menu(aria-labelledby='themes')
+                       li
+                         a(href='/profile') Мой профиль
+                       li
+                         a(href='/course') Мои курсы
+                       li.divider
+                       li
+                         a(href='/auth/logout') Выход
+                  -else
+                    a(href='/auth/login')
+                      | Войти
+
                
              
