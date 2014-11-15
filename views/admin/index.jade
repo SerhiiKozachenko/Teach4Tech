@@ -1,7 +1,21 @@
 extends ../layout
 
+block styles
+  -if (process.env.NODE_ENV == 'production')
+    link(type="text/css", rel="stylesheet", href="/dist/Teach4Tech-admin.0.0.1.min.css")
+  -else 
+    <!-- build:css /tmp/combined-admin.css -->
+    link(type="text/css", rel="stylesheet", href="/styles/admin.css")
+    <!-- endbuild -->
+
 block scripts
-  script(src='/js/admin.js')
+  -if (process.env.NODE_ENV == 'production')
+    script(src="/dist/Teach4Tech-admin.0.0.1.min.js")
+  -else 
+    <!-- build:js /tmp/combined-admin.js -->
+    script(src='/js/admin.js')
+    <!-- endbuild -->
+  
 
 
 block content

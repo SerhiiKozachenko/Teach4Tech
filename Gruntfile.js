@@ -10,38 +10,56 @@ module.exports = function(grunt) {
     },
 
     less: {
-       prod: {
-           files: {"public/styles/main.css": "public/styles/main.less"}
+       main: {
+         files: {"public/styles/main.css": "public/styles/main.less"}
+       },
+       admin: {
+         files: {"public/styles/admin.css": "public/styles/admin.less"}
        }
     },
 
     uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-      },
-      build: {
+      main: {
+        options: {
+          banner: '/*! <%= pkg.name %> -main <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        },
         files: {
-          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.js': ['public/tmp/combined.js']
+          'public/dist/<%= pkg.name %>-main.<%= pkg.version %>.min.js': ['public/tmp/combined-main.js']
+        }
+      },
+      admin: {
+        options: {
+          banner: '/*! <%= pkg.name %> -admin <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        },
+        files: {
+          'public/dist/<%= pkg.name %>-admin.<%= pkg.version %>.min.js': ['public/tmp/combined-admin.js']
         }
       }
     },
 
     cssmin: {
-      add_banner: {
+      main: {
         options: {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         files: {
-          'public/dist/<%= pkg.name %>.<%= pkg.version %>.min.css': ['public/tmp/combined.css']
+          'public/dist/<%= pkg.name %>-main.<%= pkg.version %>.min.css': ['public/tmp/combined-main.css']
+        }
+      },
+      admin: {
+        options: {
+          banner: '/*! <%= pkg.name %> -admin <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+        },
+        files: {
+          'public/dist/<%= pkg.name %>-admin.<%= pkg.version %>.min.css': ['public/tmp/combined-admin.css']
         }
       }
     },
 
     concatBlocks: {
-        html: 'views/layout.jade',
-        root: 'public'
+      html: ['views/layout.jade', 'views/admin/index.jade'],
+      root: 'public'
     },
-
 
   });
 
@@ -54,6 +72,9 @@ module.exports = function(grunt) {
   
 
   // Default task(s).
-  grunt.registerTask('default', ['clean', 'less:prod', 'concatBlocks', 'concat', 'uglify', 'cssmin', 'clean:tmp']);
+  grunt.registerTask('default', ['clean', 'less', 'concatBlocks', 'concat', 'uglify', 'cssmin', 'clean:tmp']);
+
+
+
 
 };
