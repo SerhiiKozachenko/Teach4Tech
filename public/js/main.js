@@ -1,0 +1,1 @@
+kendo.culture("ru-RU");

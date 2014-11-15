@@ -28,7 +28,7 @@ angular.module('Teach4Tech.Admin.Viewmodels')
               total: "total"
         	},
           },
-          height: 430,
+          height: 400,
           scrollable: true,
           sortable: true,
           filterable: true,
@@ -46,7 +46,7 @@ angular.module('Teach4Tech.Admin.Viewmodels')
             { field: "author", title: "Автор" },
             { field: "date", title: "Дата", template: '#= kendo.toString(kendo.parseDate(date), "MM/dd/yyyy" ) #' },
             { field: "hidden", title: "Скрытое?", template: '#= hidden == true ? "Да" : "Нет" #' },
-            { title: "&nbsp;",
+            { title: "Действия",
               width: "140px",
               command: [
                 { name: '_edit', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-edit", click: _edit },
