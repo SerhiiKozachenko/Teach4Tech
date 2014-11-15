@@ -3,54 +3,70 @@ angular.module('Teach4Tech.Admin.Viewmodels')
   	return function(){
 
   		this.gridConfig = {
-                        dataSource: {
-                            data: [{
-							  	ProductName: 'asdas',
-								UnitPrice: 1003,
-								UnitsInStock: 2,
-								Discontinued: true
-                            }, {
-								ProductName: 'asdas',
-								UnitPrice: 1003,
-								UnitsInStock: 2,
-								Discontinued: true
-                            }, {
-								ProductName: 'asdas',
-								UnitPrice: 1003,
-								UnitsInStock: 2,
-								Discontinued: true
-                            }, {
-								ProductName: 'asdas',
-								UnitPrice: 1003,
-								UnitsInStock: 2,
-								Discontinued: true
-                            }],
-                            schema: {
-                                model: {
-                                    fields: {
-                                        ProductName: { type: "string" },
-                                        UnitPrice: { type: "number" },
-                                        UnitsInStock: { type: "number" },
-                                        Discontinued: { type: "boolean" }
-                                    }
-                                }
-                            },
-                            pageSize: 20
-                        },
-                        height: 430,
-                        scrollable: true,
-                        sortable: true,
-                        filterable: true,
-                        pageable: {
-                            input: true,
-                            numeric: false
-                        },
-                        columns: [
-                            "ProductName",
-                            { field: "UnitPrice", title: "Unit Price", format: "{0:c}", width: "130px" },
-                            { field: "UnitsInStock", title: "Units In Stock", width: "130px" },
-                            { field: "Discontinued", width: "130px" }
-                        ]
-                    };
+          dataSource: {
+            type: 'json',
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            pageSize: 10,
+            transport: {
+              read: { url: "api/admin/video/search", dataType: "json", type: 'GET' }
+            },
+            schema: {
+              model: {
+                id: "id",
+                fields: {
+                  id: { editable: false },
+                  title: { type: 'string', validation: { required: true } },
+                  length: { type: 'string', validation: { required: true } },
+                  author: { type: 'string', validation: { required: true } },
+                  date: { type: 'date', validation: { required: true } },
+                  hidden: { type: 'boolean' },
+                }
+              },
+              data: "data",
+              total: "total"
+        	},
+          },
+          height: 430,
+          scrollable: true,
+          sortable: true,
+          filterable: true,
+          pageable: {
+            input: true,
+            refresh: true,
+            pageSizes: true,
+            numeric: true,
+          },
+          editable: true,
+          selectable: false,
+          columns: [
+            { field: "title", title: "Название" },
+            { field: "length", title: "Длина" },
+            { field: "author", title: "Автор" },
+            { field: "date", title: "Дата", template: '#= kendo.toString(kendo.parseDate(date), "MM/dd/yyyy" ) #' },
+            { field: "hidden", title: "Скрытое?", template: '#= hidden == true ? "Да" : "Нет" #' },
+            { title: "&nbsp;",
+              width: "140px",
+              command: [
+                { name: '_edit', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-edit", click: _edit },
+                { name: '_remove', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-trash", click: _remove },
+              ] 
+            }
+          ]
+        };
+
+        function _edit(e){
+        	e.preventDefault();
+        	e.stopPropagation();
+        	debugger
+        };
+
+        function _remove(e){
+        	e.preventDefault();
+        	e.stopPropagation();
+        	debugger
+        };
+
   	};
   }]);

@@ -7,17 +7,18 @@ var admin = require('./admin');
 
 module.exports = function(app){
   
-  winston.info('Routes init started');
+  winston.info('MVC routes init started');
 
   app.use('/auth', auth);
   app.use('/', home);
   app.use('/logs', log.routes);
   app.use('/blog', blog);
   app.use('/admin', admin);
+  require('./adminAPI')(app);
 
   app.use(log.console);
   app.use(log.xhr);
   app.use(log.showErrorPage);
 
-  winston.info('Routes init done');
+  winston.info('MVC routes init done');
 };

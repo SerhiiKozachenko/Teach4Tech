@@ -6,7 +6,7 @@ var videoSchema = new Schema({
   length: String,
   author: String,
   comments: [{ body: String, date: Date }],
-  date: String,
+  date: Date,
   hidden: Boolean,
   meta: {
     votes: Number,

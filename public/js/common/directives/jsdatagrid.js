@@ -1,5 +1,5 @@
 angular.module('JsDataGrid', [])
-  .directive('jsdatagrid',[function(){
+  .directive('jsdatagrid',['$compile', function($compile){
     return {
       restrict: 'A',
       scope: {
@@ -9,4 +9,5 @@ angular.module('JsDataGrid', [])
       	angular.element(element).kendoGrid(scope.config);
       }
     }
+
   }]);
