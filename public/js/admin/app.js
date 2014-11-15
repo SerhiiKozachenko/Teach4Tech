@@ -12,9 +12,19 @@ angular.module('Teach4Tech.Admin', ['ui.router'])
         templateUrl: "templates/statistics.html",
         //controller: 'AdminCtrl'
       })
-      .state('uploadVideo', {
-        url: "/uploadVideo",
-        templateUrl: "templates/uploadVideo.html",
+      .state('videos', {
+        url: "/videos",
+        templateUrl: "templates/video-list.html",
+        //controller: 'VideoAddCtrl'
+      })
+      .state('articles', {
+        url: "/articles",
+        templateUrl: "templates/article-list.html",
+        //controller: 'VideoAddCtrl'
+      })
+      .state('courses', {
+        url: "/courses",
+        templateUrl: "templates/course-list.html",
         //controller: 'VideoAddCtrl'
       })
       .state('messages', {

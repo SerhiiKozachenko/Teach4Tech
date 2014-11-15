@@ -24,11 +24,15 @@ block content
   div(ng-app="Teach4Tech.Admin")
     h1 Админка
     ul.nav.nav-pills
-      li.active(role='presentation')
+      li(ui-sref-active="active")
         a(ui-sref='statistics') Статистика
-      li(role='presentation')
-        a(ui-sref='uploadVideo') Загрузить новое видео
-      li(role='presentation')
+      li(ui-sref-active="active")
+        a(ui-sref='videos') Видеозаписи
+      li(ui-sref-active="active")
+        a(ui-sref='articles') Статьи
+      li(ui-sref-active="active")
+        a(ui-sref='courses') Курсы
+      li(ui-sref-active="active")
         a(ui-sref='messages') Сообщения
 
     div(ui-view="")
