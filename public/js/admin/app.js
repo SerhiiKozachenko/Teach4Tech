@@ -1,4 +1,9 @@
-angular.module('Teach4Tech.Admin', ['ui.router'])
+angular.module('Teach4Tech.Admin', [
+	'ui.router',
+	'JsDataGrid',
+	'Teach4Tech.Admin.Controllers',
+	'Teach4Tech.Admin.Viewmodels'
+  ])
   .config(['$stateProvider', '$urlRouterProvider',
    function($stateProvider, $urlRouterProvider) {
     //
@@ -15,7 +20,7 @@ angular.module('Teach4Tech.Admin', ['ui.router'])
       .state('videos', {
         url: "/videos",
         templateUrl: "templates/video-list.html",
-        //controller: 'VideoAddCtrl'
+        controller: 'VideoListCtrl'
       })
       .state('articles', {
         url: "/articles",

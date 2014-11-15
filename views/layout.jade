@@ -6,6 +6,8 @@ html
     -else 
       <!-- build:css /tmp/combined-main.css -->
       link(type="text/css", rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.css")
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.common.css")
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.uniform.css")
       link(type="text/css", rel="stylesheet", href="/styles/main.css")
       <!-- endbuild -->
     block styles 
@@ -19,7 +21,12 @@ html
         <!-- build:js /tmp/combined-main.js -->
         script(src="/components/jquery/dist/jquery.js")
         script(src="/components/bootstrap/dist/js/bootstrap.js")
+        script(src='/components/jsdatagrid/src/js/kendo.web.js')
+        script(src='/components/jsdatagrid/src/js/cultures/kendo.culture.ru-RU.js')
         script(src='/vendor/binary.js')
         script(src="/js/main.js")
+        script(src='/components/angular/angular.js')
+        script(src='/components/angular-ui-router/release/angular-ui-router.js')
+        script(src="/js/common/directives/jsdatagrid.js")
         <!-- endbuild -->
       block scripts

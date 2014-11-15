@@ -13,8 +13,10 @@ block scripts
     script(src="/dist/Teach4Tech-admin.0.0.1.min.js")
   -else 
     <!-- build:js /tmp/combined-admin.js -->
-    script(src='/components/angular/angular.js')
-    script(src='/components/angular-ui-router/release/angular-ui-router.js')
+    script(src='/js/admin/controllers/_mainCtrl.js')
+    script(src='/js/admin/controllers/videoListCtrl.js')
+    script(src='/js/admin/viewmodels/_mainVm.js')
+    script(src='/js/admin/viewmodels/videoListVm.js')
     script(src='/js/admin/app.js')
     <!-- endbuild -->
   

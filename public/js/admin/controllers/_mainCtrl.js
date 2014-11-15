@@ -1,0 +1,1 @@
+angular.module('Teach4Tech.Admin.Controllers', []);
