@@ -13,15 +13,27 @@ block scripts
     script(src="/dist/Teach4Tech-admin.0.0.1.min.js")
   -else 
     <!-- build:js /tmp/combined-admin.js -->
-    script(src='/js/admin.js')
+    script(src='/components/angular/angular.js')
+    script(src='/components/angular-ui-router/release/angular-ui-router.js')
+    script(src='/js/admin/app.js')
     <!-- endbuild -->
   
 
 
 block content
-  h1 Админка
-  a(href='/admin/uploadVideo') Загрузить новое видео
+  div(ng-app="Teach4Tech.Admin")
+    h1 Админка
+    ul.nav.nav-pills
+      li.active(role='presentation')
+        a(ui-sref='statistics') Статистика
+      li(role='presentation')
+        a(ui-sref='uploadVideo') Загрузить новое видео
+      li(role='presentation')
+        a(ui-sref='messages') Сообщения
 
+    div(ui-view="")
+
+//  a(href='/admin/uploadVideo') Загрузить новое видео
   h1 BinaryJS File Upload and Streaming
   section#main
     fieldset
@@ -35,4 +47,4 @@ block content
       legend Play the Video
       section.left
         video#video
-
+//
