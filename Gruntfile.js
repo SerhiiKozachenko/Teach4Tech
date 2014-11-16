@@ -61,6 +61,16 @@ module.exports = function(grunt) {
       root: 'public'
     },
 
+    shell: {
+      dev: {
+        options: { stdout: true },
+        command: [
+          'mng',
+          'redis-server',
+          'node app.js'
+        ].join('&&')
+      }
+  }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -69,12 +79,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-concat-blocks');
+  grunt.loadNpmTasks('grunt-shell');
   
 
   // Default task(s).
   grunt.registerTask('default', ['clean', 'less', 'concatBlocks', 'concat', 'uglify', 'cssmin', 'clean:tmp']);
 
-
+  grunt.registerTask('server', ['shell:dev']);
 
 
 };
