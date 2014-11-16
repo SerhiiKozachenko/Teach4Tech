@@ -15,8 +15,11 @@ block scripts
     <!-- build:js /tmp/combined-admin.js -->
     script(src='/js/admin/controllers/_mainCtrl.js')
     script(src='/js/admin/controllers/videoListCtrl.js')
+    script(src='/js/admin/controllers/videoEditCtrl.js')
     script(src='/js/admin/viewmodels/_mainVm.js')
     script(src='/js/admin/viewmodels/videoListVm.js')
+    script(src='/js/admin/directives/_mainDir.js')
+    script(src='/js/admin/directives/menuDir.js')
     script(src='/js/admin/app.js')
     <!-- endbuild -->
   
@@ -25,16 +28,6 @@ block scripts
 block content
   div(ng-app="Teach4Tech.Admin")
     h1 Админка
-    ul.nav.nav-pills
-      li(ui-sref-active="active")
-        a(ui-sref='statistics') Статистика
-      li(ui-sref-active="active")
-        a(ui-sref='videos') Видеозаписи
-      li(ui-sref-active="active")
-        a(ui-sref='articles') Статьи
-      li(ui-sref-active="active")
-        a(ui-sref='courses') Курсы
-      li(ui-sref-active="active")
-        a(ui-sref='messages') Сообщения
+    ul.nav.nav-pills(menu="")
 
     div(ui-view="")

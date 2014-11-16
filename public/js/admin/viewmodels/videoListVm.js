@@ -1,5 +1,5 @@
-angular.module('Teach4Tech.Admin.Viewmodels')
-  .factory('VideoListVm', [function(){
+angular.module('Teach4Tech.Admin.Viewmodels.VideoList', [])
+  .factory('VideoListVm', ['$state', '$timeout', function($state, $timeout){
   	return function(){
 
   		this.gridConfig = {
@@ -70,6 +70,10 @@ angular.module('Teach4Tech.Admin.Viewmodels')
         	e.preventDefault();
         	e.stopPropagation();
         	debugger
+          var rowData = this.dataItem($(e.currentTarget).closest("tr"));
+          $timeout(function(){
+            $state.go('videos.edit', { id: rowData._id });
+          }, true);
         };
 
         function _remove(e){
