@@ -52,11 +52,18 @@ angular.module('Teach4Tech.Admin.Viewmodels')
             { title: "Действия",
               width: "140px",
               command: [
+                { name: '_play', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-eye-open", click: _play },
                 { name: '_edit', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-edit", click: _edit },
                 { name: '_remove', text: "", className: "k-button-custom", iconClass: "glyphicon glyphicon-trash", click: _remove },
               ] 
             }
           ]
+        };
+
+        function _play(e){
+          e.preventDefault();
+          e.stopPropagation();
+          debugger
         };
 
         function _edit(e){
