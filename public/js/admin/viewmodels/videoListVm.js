@@ -30,15 +30,18 @@ angular.module('Teach4Tech.Admin.Viewmodels')
           },
           height: 400,
           scrollable: true,
-          sortable: true,
-          filterable: true,
+          sortable: {
+            mode: "multiple",
+            allowUnsort: true
+          },
+          filterable: false,
           pageable: {
             input: true,
             refresh: true,
             pageSizes: true,
             numeric: true,
           },
-          editable: true,
+          editable: false,
           selectable: false,
           columns: [
             { field: "title", title: "Название" },
