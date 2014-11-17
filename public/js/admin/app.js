@@ -32,6 +32,11 @@ angular.module('Teach4Tech.Admin', [
         templateUrl: "templates/video-edit.html",
         controller: 'VideoEditCtrl'
       })
+      .state('videos.add', {
+        url: "/new",
+        templateUrl: "templates/video-add.html",
+        controller: 'VideoAddCtrl'
+      })
       .state('articles', {
         url: "/articles",
         templateUrl: "templates/article-list.html"
