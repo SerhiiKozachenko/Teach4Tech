@@ -9,6 +9,11 @@ How to:
  * Run in production mode: ```NODE_ENV=production node app.js```
  * Run in dev mode: ```node app.js```
  
+Prerequisites:
+===
+ * MongoDB server running
+ * Redis server running
+ 
 Setup dev env in Windows:
 ===
  * Comment out hiredis in package.json since it's not supported in Windows
