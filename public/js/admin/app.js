@@ -1,8 +1,10 @@
 angular.module('Teach4Tech.Admin', [
 	'ui.router',
 	'JsDataGrid',
+  'Utils',
 	'Teach4Tech.Admin.Controllers',
 	'Teach4Tech.Admin.Viewmodels',
+  'Teach4Tech.Admin.Services',
   'Teach4Tech.Admin.Directives'
   ])
   .config(['$stateProvider', '$urlRouterProvider',
