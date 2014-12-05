@@ -15,7 +15,7 @@ angular.module('Teach4Tech.Admin', [
     $stateProvider
       .state('statistics', {
         url: "/",
-        templateUrl: "templates/statistics.html"
+        templateUrl: "views/admin/statistics.html"
       })
       .state('videos', {
         abstract: true,
@@ -24,29 +24,29 @@ angular.module('Teach4Tech.Admin', [
       })
       .state('videos.list', {
         url: "/",
-        templateUrl: "templates/video-list.html",
+        templateUrl: "views/admin/video-list.html",
         controller: 'VideoListCtrl'
       })
       .state('videos.edit', {
         url: "/:id/edit",
-        templateUrl: "templates/video-edit.html",
+        templateUrl: "views/admin/video-edit.html",
         controller: 'VideoEditCtrl'
       })
       .state('videos.add', {
         url: "/new",
-        templateUrl: "templates/video-add.html",
+        templateUrl: "views/admin/video-add.html",
         controller: 'VideoAddCtrl'
       })
       .state('articles', {
         url: "/articles",
-        templateUrl: "templates/article-list.html"
+        templateUrl: "views/admin/article-list.html"
       })
       .state('courses', {
         url: "/courses",
-        templateUrl: "templates/course-list.html"
+        templateUrl: "views/admin/course-list.html"
       })
       .state('messages', {
         url: "/messages",
-        templateUrl: "templates/messages.html"
+        templateUrl: "views/admin/messages.html"
       });
   }]);

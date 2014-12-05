@@ -1,7 +1,7 @@
 var fs = require('fs');
 
 
-var UPLOAD_PATH = __dirname + '/../content';
+var UPLOAD_PATH = __dirname + '/../upload/video';
 var SUPPORTED_TYPES = [
     'video/mp4',
     'video/webm',
