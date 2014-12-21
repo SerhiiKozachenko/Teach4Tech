@@ -1,4 +1,6 @@
 var fs = require('fs');
+var crypto = require('crypto');
+var md5sum = crypto.createHash('md5');
 
 
 var UPLOAD_PATH = __dirname + '/../upload/video';
@@ -26,7 +28,8 @@ function _save(stream, meta){
     return;
   }
  
-  var file = fs.createWriteStream(UPLOAD_PATH + '/' + meta.name);
+  var fileName = meta.name + '_' + md5sum.digest('hex');
+  var file = fs.createWriteStream(UPLOAD_PATH + '/' + fileName);
   stream.pipe(file);
  
   stream.on('data', function (data) {
@@ -34,7 +37,7 @@ function _save(stream, meta){
   });
  
   stream.on('end', function () {
-    stream.write({ end: true });
+    stream.write({ end: true, fileName: fileName });
   });
 };
 

@@ -1,7 +1,9 @@
 angular.module('Teach4Tech.Admin', [
 	'ui.router',
 	'JsDataGrid',
+  'DragAndDrop',
   'Utils',
+  'BinaryClient',
 	'Teach4Tech.Admin.Controllers',
 	'Teach4Tech.Admin.Viewmodels',
   'Teach4Tech.Admin.Services',

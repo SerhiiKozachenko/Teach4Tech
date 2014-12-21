@@ -4,16 +4,16 @@
 	 <section id="main">
 	    <fieldset>
 	        <legend>Перетащи видео сюда</legend>
-	        <aside id="upload-box">
+	        <aside id="upload-box" drop-handler="vm.onVideoDropped(data)">
 	            <article id="progress">Бросай видео файл сюда</article>
 	        </aside>
 	    </fieldset>
 
-	    <fieldset>
+	    <!-- <fieldset>
 	        <legend>Выбери ссылку</legend>
 
 	        <nav id="list"></nav>
-	    </fieldset>
+	    </fieldset> -->
 
 	    <fieldset>
 	        <legend>Просмотр видео</legend>
@@ -21,4 +21,29 @@
 	        <video id="video"></video>
 	    </fieldset>
 	</section>
+
+	<div class="clearfix"></div>
+	<br>
+	<br>
+	
+	<div class="col-lg-6">
+		<form class="form-horizontal" role="form">
+		 <h3>Сохрани видео</h3>
+		 <div class="form-group">
+		    <label for="exampleInputEmail1">Название:</label>
+		    <input type="text" class="form-control" placeholder="Название" ng-model="vm.model.title">
+		  </div>
+
+		  <div class="checkbox">
+		    <label>
+		      <input type="checkbox" ng-model="vm.model.hidden"> Не показывать на сайте ?
+		    </label>
+		  </div>
+		  <div class="clearfix"></div>
+		  <br>
+		  <button type="button" class="btn btn-success" ng-click="vm.save()">Сохранить</button>
+		  <button type="button" class="btn btn-danger" ng-click="vm.remove()">Удалить</button>
+
+		</form>
+	</div>
 </div>

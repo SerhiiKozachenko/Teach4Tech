@@ -11,7 +11,8 @@ var videoSchema = new Schema({
   meta: {
     votes: Number,
     favs:  Number
-  }
+  },
+  file: String
 });
 
 module.exports = mongoose.model('Video', videoSchema);

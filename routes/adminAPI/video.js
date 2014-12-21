@@ -46,7 +46,28 @@ router.get('/search', _isAdminLoggedIn, function(req, res, next){
       res.json({data: result, total: totalCount});
     }
   });
+});
 
+router.post('/add', _isAdminLoggedIn, function(req, res, next) {
+    var title = req.body.title;
+    var hidden = req.body.hidden;
+    var fileName = req.body.fileName;
+    var video = new Video({
+      title: title,
+      hidden: hidden,
+      length: 'null',
+      comments: [],
+      date: new Date().toISOString(),
+      author: 'Sergey Kozachenko',
+      file: fileName
+    });
+    video.save(function(err){
+      if (err){
+        next(err);
+      } else{
+        res.send('OK');
+      }
+    });
 });
 
 function _isAdminLoggedIn(req, res, next){
