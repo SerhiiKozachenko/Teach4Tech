@@ -1,52 +1,69 @@
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var User = require('./models/user');
-var redis = require('redis');
-var cache = redis.createClient();
-var winston = require('winston');
 
-var REDIS_USER_EXPIRATION_SECONDS = 21600; // 6 Hrs
+///
+/// JWT CUSTOM AUTHENTICATION
+///
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.findOne({ name: username }, function(err, user) {
-      if (err) return done(err);
-      if (!user) {
-        return done(null, false, 'Incorrect username');
-      }
-      user.comparePassword(password, function(err, isMatch){
-        if (err) return done(err);
-        if (!isMatch){
-          done(null, false, 'Incorrect password');
+var jwt = require('./jwt');
+var SECRET_THAT_SHOULD_UPDATE = 'haasjdiae38';
+
+module.exports = function (app){
+
+  // ENABLE CORS
+  app.use(function(req, res, next){
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+      res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+      next();
+  });
+
+  
+  app.use(function(req, res, next){
+
+      // generate auth token
+      // callback(error, token)
+      req.login = function (user, callback){
+        // generate jwt
+        var payload = {
+          iss: req.hostname,
+          sub: user.id
+        };
+
+        var token = jwt.encode(payload, SECRET_THAT_SHOULD_UPDATE);
+
+        // Todo: save user to redis
+
+        // error, token
+        callback(null, token);
+      };
+
+      // check is req is authenticated
+      // callback(error, user)
+      req.isAuthenticated = function (callback){
+
+        if (!req.headers.authorization || req.headers.authorization.split(' ').length < 2) {
+          callback(new Error('No authorization header'));
         } else {
-          done(null, { id: user.id, name: user.name });
+          var token = req.headers.authorization.split(' ')[1];
+          try {
+            var payload = jwt.decode(token, SECRET_THAT_SHOULD_UPDATE);
+            if (!payload || !payload.sub) {
+              callback(new Error('Authentication failed'));
+            } else {
+              // Todo: resolve user by id (sub) from redis
+              callback(null, {});
+            }
+          }catch(err) {
+            callback(err);
+          }
+          
         }
-      });
-    });
-  }
-));
+        
+      };
 
-passport.serializeUser(function(user, done) {
-  cache.setex('user:'+user.id, REDIS_USER_EXPIRATION_SECONDS, JSON.stringify({ id: user.id, name: user.name }));
-  done(null, user.id);
-});
+      next();
+  });
 
-passport.deserializeUser(function(id, done) {
-  cache.get('user:'+id, function(err, result){
-    if (err){
-      winston.error('Redis, deserializeUser: '+ err.stack);
-    } else if (!result) {
-      winston.debug('Redis, deserializeUser: empty get from db');
-      User.findById(id, function(err, user) {
-        if (!err) {
-          cache.setex('user:'+id, REDIS_USER_EXPIRATION_SECONDS, JSON.stringify({ id: user.id, name: user.name }));
-        }
-        done(err, { id: user.id, name: user.name });
-      });
-    } else {
-      winston.debug('Redis, deserializeUser: cool get from redis');
-      winston.debug('Result: ' + result);
-      done(null, JSON.parse(result));
-    }
-  })
-});
+  // Todo: add check Authorization header
+
+};

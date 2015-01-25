@@ -1,5 +1,4 @@
 var router = require('express').Router();
-var passport = require('passport');
 var User = require('../models/user');
 var winston = require('winston');
 
@@ -8,10 +7,10 @@ router.route('/login')
   	res.render('auth/login', {login: {}, errors: req.flash('error')});
   })
   .post(
-    passport.authenticate('local', { 
+    /*passport.authenticate('local', { 
   	  successRedirect: '/blog',
       failureRedirect: 'login',
-      failureFlash: true })
+      failureFlash: true })*/
   );
 
 router.route('/register')
@@ -31,10 +30,11 @@ router.route('/register')
       if (err) {
       	next(err);
       } else {
-      	req.login(user, function(err) {
+      	req.login(user, function(err, token) {
           if (err) {
             next(err);
           } else {
+            // Todo: send token to client
           	res.redirect('/blog');
           }
        });

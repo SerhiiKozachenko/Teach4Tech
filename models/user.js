@@ -17,6 +17,7 @@ var userSchema = new Schema({
   email: String
 });
 
+// hash password autmatically on save
 userSchema.pre('save', function(next) {
   var user = this;
   // only hash the password if it has been modified
@@ -37,12 +38,22 @@ userSchema.pre('save', function(next) {
   });
 });
 
+// compare hashed passwords
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);
         cb(null, isMatch);
     });
 };
+
+// hide password from client
+userSchema.methods.toJSON = function(){
+  var user = this.toObject();
+  delete user.password;
+
+  return user;
+};
+
 
 module.exports = mongoose.model('User', userSchema);
 

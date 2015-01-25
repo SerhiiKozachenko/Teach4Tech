@@ -2,7 +2,7 @@ var winston = require('winston');
 
 module.exports = function(app){
 
-  app.use(function(req, res, next){
+  /*app.use(function(req, res, next){
   	
   	if (!!req.user) {
   	  res.locals.isLoggedIn = !req.user.anonymous;
@@ -10,6 +10,6 @@ module.exports = function(app){
   	}
     
     next();
-  });
+  });*/
   
 };
