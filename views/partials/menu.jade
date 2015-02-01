@@ -1,58 +1,42 @@
-.navbar.navbar-default.navbar-fixed-top
+nav#main_menu.navbar.navbar-inverse.navbar-fixed-top
     .container
         .navbar-header
-          a.navbar-brand(href='../') Teach4Tech
+          a.navbar-brand(href='../')
+              | Teach
+              span.glyphicon.glyphicon-flash
+              | Tech
           button.navbar-toggle(type='button', data-toggle='collapse', data-target='#navbar-main')
             span.icon-bar
             span.icon-bar
             span.icon-bar
         #navbar-main.navbar-collapse.collapse
           ul.nav.navbar-nav
-            li.dropdown
-              a#themes.dropdown-toggle(data-toggle='dropdown', href='#')
-                | Уроки
-                span.caret
-              ul.dropdown-menu(aria-labelledby='themes')
-                li
-                  a(href='../default/') Все
-                li.divider
-                li
-                  a(href='../cerulean/') JavaScript
-                li
-                  a(href='../cosmo/') .Net
-                li
-                  a(href='../cyborg/') Node.js
-                li
-                  a(href='../darkly/') AngularJS
-                li
-                  a(href='../flatly/') ReactJS
             li
-              a(href='../blog/') Статьи
+              a(href='../blog/') Articles
             li
-              a(href='../course/') Курсы
+              a(href='../course/') Lessons
             li
-              a(href='../about/') О нас
+              a(href='../course/') Courses
+            li
+              a(href='../about/') About
           ul.nav.navbar-nav.navbar-right
             li
               ul.nav.navbar-nav
                 li.dropdown
-                  -if (isLoggedIn) 
+                  -if (isLoggedIn)
                     a.dropdown-toggle(data-toggle='dropdown', href='#')
                       | #{userName}
                       span.caret
-                     ul.dropdown-menu(aria-labelledby='themes')
+                     ul.dropdown-menu
                        li
-                         a(href='/profile') Мой профиль
+                         a(href='/profile') My Profile
                        li
-                         a(href='/course') Мои курсы
+                         a(href='/course') My Courses
                        li
-                         a(href='/admin') Админка
+                         a(href='/admin') Admin Panel
                        li.divider
                        li
-                         a(href='/auth/logout') Выход
+                         a(href='/auth/logout') Sign Out
                   -else
                     a(href='/auth/login')
-                      | Войти
-
-               
-             
+                      | Sign In

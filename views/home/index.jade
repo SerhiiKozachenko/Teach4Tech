@@ -1,11 +1,11 @@
 extends ../layout
 
 block content
-  h1 #{message}
-  h4 Online users #{online}
-  h3 #{process.env.NODE_ENV}
-  a(href='/blog') My blog 
-  &nbsp;
-  a(href='/about') About me
-  &nbsp;
-  a(href='/auth/login') Login
+  .jumbotron
+    h1 Ahoy, Learner!
+    p Feel free to use all these goodies selected and prepared for you!
+      br
+      | You can start with watching hot stuff videos or reading extra useful articles
+      | about cutting edge technologies.
+    p
+      a.btn.btn-warning.btn-lg(href="#") Learn more

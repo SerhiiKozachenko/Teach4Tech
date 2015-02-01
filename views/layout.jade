@@ -3,7 +3,7 @@ html
     title!=title
     -if (process.env.NODE_ENV == 'production')
       link(type="text/css", rel="stylesheet", href="/dist/Teach4Tech-main.0.0.1.min.css")
-    -else 
+    -else
       <!-- build:css /tmp/combined-main.css -->
       link(type="text/css", rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.css")
       link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.common.css")
@@ -11,14 +11,15 @@ html
       link(type="text/css", rel="stylesheet", href="/styles/jsdatagrid-overrides.css")
       link(type="text/css", rel="stylesheet", href="/styles/main.css")
       <!-- endbuild -->
-    block styles 
+    block styles
   body
     include partials/menu
     #main_wrapper.container
       block content
+    include partials/footer
       -if (process.env.NODE_ENV == 'production')
         script(src="/dist/Teach4Tech-main.0.0.1.min.js")
-      -else 
+      -else
         <!-- build:js /tmp/combined-main.js -->
         script(src="/components/jquery/dist/jquery.js")
         script(src="/components/bootstrap/dist/js/bootstrap.js")

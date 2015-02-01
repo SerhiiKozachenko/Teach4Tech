@@ -1,13 +1,40 @@
 @import 'login.less';
 @import url(http://fonts.googleapis.com/css?family=Comfortaa&subset=latin,cyrillic);
 
+//constants
+@panel_background: rgba(255, 255, 255, .3);
+
 body {
 	font-family: 'Comfortaa', cursive;
+	background: url('/img/main_background.png');
+}
+
+::selection {
+	background: #ffb7b7; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+	background: #ffb7b7; /* Gecko Browsers */
 }
 
 #main_wrapper {
 	margin-top: 50px;
 	font-size: 14px;
+	height: 89%;
+
+	.jumbotron {
+		margin-top:60px;
+		background:@panel_background;
+	}
 }
 
+#main_menu {
+	.navbar-brand {
+		margin-top:-3px;
+	}
+}
 
+#main_footer {
+	.copyright {
+		font-size:11px;
+	}
+}
