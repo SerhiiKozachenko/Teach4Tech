@@ -1,18 +1,62 @@
 extends ../layout
 
 block content
-  h1 Articles
-  a(href='/blog/add') add
+  #page-articles
+    .page_content
+      .row.thumbnail
+        .col-md-3
+          h1 Articles
+          .input-group
+            input.form-control(type='search', placeholder='Search')
+            span.input-group-btn
+              button.btn.btn-warning(type='button') &nbsp;
+                span.glyphicon.glyphicon-search
 
-  for article in articles
-    article
-      h3=article.title
-      p=article.body
-      small
-        time(datetime=article.date)=article.date
-        &nbsp; 
-        span=article.author
-        br
-        a(href='/blog/#{article.id}/show') show
-        &nbsp;
-        a(href='/blog/#{article.id}/edit') edit
+          br
+
+          .list-group
+            a.list-group-item.active(href='#') JavaScript
+
+            a.list-group-item(href='#') Python
+
+            a.list-group-item(href='#') Ruby on Rails
+
+            a.list-group-item(href='#') Node.js
+
+            a.list-group-item(href='#') Java
+
+            a.list-group-item(href='#') Scala
+
+            a.list-group-item(href='#') Clojure
+
+            a.list-group-item(href='#') Go
+
+            a.list-group-item(href='#') Mongo
+
+            a.list-group-item(href='#') Heroku
+
+            a.list-group-item(href='#') Clojure
+
+            a.list-group-item(href='#') Go
+
+            a.list-group-item(href='#') Mongo
+
+            a.list-group-item(href='#') Heroku
+
+
+        .col-md-9
+          .articles_list
+            a(href='/blog/add') add
+
+            for article in articles
+              article
+                h3=article.title
+                p=article.body
+                small
+                  time(datetime=article.date)=article.date
+                  &nbsp;
+                  span=article.author
+                  br
+                  a(href='/blog/#{article.id}/show') show
+                  &nbsp;
+                  a(href='/blog/#{article.id}/edit') edit

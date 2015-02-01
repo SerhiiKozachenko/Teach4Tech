@@ -1,4 +1,5 @@
 @import 'login.less';
+@import 'articles.less';
 @import url(http://fonts.googleapis.com/css?family=Comfortaa&subset=latin,cyrillic);
 
 //constants
@@ -19,10 +20,13 @@ body {
 #main_wrapper {
 	margin-top: 50px;
 	font-size: 14px;
-	height: 89%;
+	min-height: 89%;
+
+	.page_content {
+		margin-top:60px;
+	}
 
 	.jumbotron {
-		margin-top:60px;
 		background:@panel_background;
 	}
 }
