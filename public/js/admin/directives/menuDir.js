@@ -5,27 +5,27 @@ angular.module('Teach4Tech.Admin.Directives.Menu', [])
       template: '<li ng-repeat="item in menuItems" ng-class="{active: isActive(item.root)}"><a ui-sref="{{item.state}}"><span class="{{item.iconClass}}"></span>&nbsp;&nbsp;{{item.title}}</a></li>',
       controller: ['$scope', '$state', function ($scope, $state) {
       	$scope.menuItems = [{
-      	    title: 'Статистика',
+      	    title: 'Statistics',
   		      state: 'statistics',
   		      root: 'statistics',
             iconClass: 'glyphicon glyphicon-stats'
       	  }, {
-  		      title: 'Видеозаписи',
+  		      title: 'Video records',
 		        state: 'videos.list',
 		        root: 'videos',
             iconClass: 'glyphicon glyphicon-film'
       	  }, {
-  		      title: 'Статьи',
+  		      title: 'Articles',
 		        state: 'articles',
 		        root: 'articles',
             iconClass: 'glyphicon glyphicon-pencil'
       	  }, {
-  		      title: 'Курсы',
+  		      title: 'Courses',
 		        state: 'courses',
 		        root: 'courses',
             iconClass: 'glyphicon glyphicon-list-alt'
       	  }, {
-  		      title: 'Сообщения',
+  		      title: 'Messages',
 		        state: 'messages',
 		        root: 'messages',
             iconClass: 'glyphicon glyphicon-comment'

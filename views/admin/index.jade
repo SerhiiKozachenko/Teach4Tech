@@ -3,7 +3,7 @@ extends ../layout
 block styles
   -if (process.env.NODE_ENV == 'production')
     link(type="text/css", rel="stylesheet", href="/dist/Teach4Tech-admin.0.0.1.min.css")
-  -else 
+  -else
     <!-- build:css /tmp/combined-admin.css -->
     link(type="text/css", rel="stylesheet", href="/styles/admin.css")
     <!-- endbuild -->
@@ -11,7 +11,7 @@ block styles
 block scripts
   -if (process.env.NODE_ENV == 'production')
     script(src="/dist/Teach4Tech-admin.0.0.1.min.js")
-  -else 
+  -else
     <!-- build:js /tmp/combined-admin.js -->
     script(src='/js/admin/controllers/_mainCtrl.js')
     script(src='/js/admin/controllers/videoListCtrl.js')
@@ -26,12 +26,15 @@ block scripts
     script(src='/js/admin/directives/menuDir.js')
     script(src='/js/admin/app.js')
     <!-- endbuild -->
-  
+
 
 
 block content
-  div(ng-app="Teach4Tech.Admin")
-    h2 Админка
-    ul.nav.nav-pills(menu="")
+  div#page-admin(ng-app="Teach4Tech.Admin")
+    .page_content
+      .row.thumbnail
+        .col-md-12
+          h1 Admin Panel
+          ul.nav.nav-pills(menu="")
 
-    div(ui-view="")
+          div(ui-view="")
