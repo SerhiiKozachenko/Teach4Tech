@@ -1,7 +1,7 @@
 nav#main_menu.navbar.navbar-inverse.navbar-fixed-top
     .container
         .navbar-header
-          a.navbar-brand(href='../')
+          a.navbar-brand(href='/')
               | Teach
               span.glyphicon.glyphicon-flash
               | Tech
@@ -12,31 +12,49 @@ nav#main_menu.navbar.navbar-inverse.navbar-fixed-top
         #navbar-main.navbar-collapse.collapse
           ul.nav.navbar-nav
             li
-              a(href='../blog/') Articles
+              a(href='../blog/')
+                span.glyphicon.glyphicon-file
+                |&nbsp;Articles
             li
-              a(href='../course/') Lessons
+              a(href='../course/')
+                span.glyphicon.glyphicon-film
+                |&nbsp;Lessons
             li
-              a(href='../course/') Courses
+              a(href='../course/')
+                span.glyphicon.glyphicon-list-alt
+                |&nbsp;Courses
             li
-              a(href='../about/') About
+              a(href='../about/')
+                span.glyphicon.glyphicon-info-sign
+                |&nbsp;About
           ul.nav.navbar-nav.navbar-right
             li
               ul.nav.navbar-nav
                 li.dropdown
                   -if (isLoggedIn)
                     a.dropdown-toggle(data-toggle='dropdown', href='#')
-                      | #{userName}
+                      span.glyphicon.glyphicon-user
+                      |&nbsp;#{userName}
                       span.caret
                      ul.dropdown-menu
                        li
-                         a(href='/profile') My Profile
+                         a(href='/profile')
+                          span.glyphicon.glyphicon-eye-open
+                          |&nbsp;My Profile
                        li
-                         a(href='/course') My Courses
+                         a(href='/course')
+                          span.glyphicon.glyphicon-list-alt
+                          |&nbsp;My Courses
                        li
-                         a(href='/admin') Admin Panel
+                         a(href='/admin')
+                          span.glyphicon.glyphicon-wrench
+                          |&nbsp;Admin Panel
                        li.divider
                        li
-                         a(href='/auth/logout') Sign Out
+                         a(href='/auth/logout')
+                          span.glyphicon.glyphicon-off
+                          |&nbsp;Sign Out
                   -else
                     a(href='/auth/login')
-                      | Sign In
+                      span.glyphicon.glyphicon-user
+                      |&nbsp;Sign In

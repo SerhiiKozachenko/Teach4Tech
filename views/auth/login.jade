@@ -1,18 +1,23 @@
 extends ../layout
 
 block content
-  h1 Login
-  a(href='/auth/register') Register
-  
-  form(action='/auth/login', method='POST')
-    label(for='username') Username: 
-    input(type='text', name='username', value=login.name)
-    br
-    label(for='password') Password:
-    input(type='password', name='password', value=login.password)
-    br
-    button(type='submit') Login
-  br
-  for error in errors
-    span #{error}
-    br
+  #page-login
+    .page_content
+      .row
+        .col-md-3.col-md-offset-5
+          h1 Get in, Bro!
+          hr
+          form(action='/auth/login', method='POST', autocomplete='on')
+            label(for='username') Username
+            input.form-control(type='text', name='username', value=login.name, placeholder='Username', autofocus='')
+            br
+            label(for='password') Password
+            input.form-control(type='password', name='password', value=login.password, placeholder='Password')
+            br
+            button.btn.btn-success(type='submit') Login
+            &nbsp;&nbsp;&nbsp;
+            a.btn.btn-warning(href='/auth/register') Register
+          br
+          for error in errors
+            span.text-danger #{error}
+            br
