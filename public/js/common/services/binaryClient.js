@@ -2,7 +2,9 @@ angular.module('BinaryClient', [])
   .service('binaryClient', ['$log', '$q', function($log, $q){
   	return new function(){
 
-      var binaryClient = new BinaryClient('ws://localhost:3000');
+      var hostname = window.location.hostname;
+      var port = window.location.port;
+      var binaryClient = new BinaryClient('ws://' + hostname + ':' + port);
 
       var VIDEO_UPLOAD_EVENT = "video-upload";
       var VIDEO_GET_EVENT = "video-request";
@@ -10,7 +12,7 @@ angular.module('BinaryClient', [])
       binaryClient.on('open', function () {
         $log.debug('Binary client: started');
       });
-		
+
       binaryClient.on('stream', function (stream) {
         $log.debug('Binary client: stream received');
       });
@@ -23,7 +25,7 @@ angular.module('BinaryClient', [])
             size: file.size,
             type: file.type
           }, file);
- 
+
         stream.on('data', function (data) {
           if (data.end) {
             deferred.resolve(data);
@@ -31,7 +33,7 @@ angular.module('BinaryClient', [])
             deferred.notify(data);
           }
         });
- 
+
         stream.on('error', function(err){
           deferred.reject(err);
         });
@@ -61,7 +63,7 @@ angular.module('BinaryClient', [])
         file = file || {};
         data = data || {};
         data.event = event;
- 
+
         return binaryClient.send(file, data);
       };
 
