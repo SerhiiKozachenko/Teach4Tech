@@ -2,17 +2,19 @@ var winston = require('winston');
 var home = require('./home');
 var log = require('./log');
 var blog = require('./blog');
+var lessons = require('./lessons');
 var auth = require('./auth');
 var admin = require('./admin');
 
 module.exports = function(app){
-  
+
   winston.info('MVC routes init started');
 
   app.use('/auth', auth);
   app.use('/', home);
   app.use('/logs', log.routes);
   app.use('/blog', blog);
+  app.use('/lessons', lessons);
   app.use('/admin', admin);
   require('./adminAPI')(app);
 

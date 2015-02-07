@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+  #page-articles
+    .page_content
+      .row.thumbnail
+        .col-md-3
+          h1 Lessons
+          .input-group
+            input.form-control(type='search', placeholder='Search')
+            span.input-group-btn
+              button.btn.btn-warning(type='button') &nbsp;
+                span.glyphicon.glyphicon-search
+
+          br
+
+          .list-group
+            a.list-group-item.active(href='#') JavaScript
+
+            a.list-group-item(href='#') Python
+
+            a.list-group-item(href='#') Ruby on Rails
+
+            a.list-group-item(href='#') Node.js
+
+            a.list-group-item(href='#') Java
+
+            a.list-group-item(href='#') Scala
+
+            a.list-group-item(href='#') Clojure
+
+            a.list-group-item(href='#') Go
+
+            a.list-group-item(href='#') Mongo
+
+            a.list-group-item(href='#') Heroku
+
+            a.list-group-item(href='#') Clojure
+
+            a.list-group-item(href='#') Go
+
+            a.list-group-item(href='#') Mongo
+
+            a.list-group-item(href='#') Heroku
+
+
+        .col-md-9
+          .articles_list
+            a(href='#') add
+
+            for lesson in lessons
+              article
+                h3=lesson.title
+                p=lesson.author
+                small
+                  time(datetime=lesson.date)=lesson.date
+                  &nbsp;
+                  span=lesson.author
+                  br
+                  video(src='/lessons/playback/#{lesson.id}', controls, preload='none')
