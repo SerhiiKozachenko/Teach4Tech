@@ -10,7 +10,7 @@ angular.module('Teach4Tech.Admin.Directives.Menu', [])
   		      root: 'statistics',
             iconClass: 'glyphicon glyphicon-stats'
       	  }, {
-  		      title: 'Video records',
+  		      title: 'Lessons',
 		        state: 'videos.list',
 		        root: 'videos',
             iconClass: 'glyphicon glyphicon-film'

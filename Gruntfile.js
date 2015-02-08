@@ -43,7 +43,7 @@ module.exports = function(grunt) {
           banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
         },
         files: {
-          'public/dist/<%= pkg.name %>-vendor.<%= pkg.version %>.min.css': ['public/tmp/combined-vendor.css'],
+          // 'public/dist/<%= pkg.name %>-vendor.<%= pkg.version %>.min.css': ['public/tmp/combined-vendor.css'],
           'public/dist/<%= pkg.name %>-main.<%= pkg.version %>.min.css': ['public/tmp/combined-main.css']
         }
       },

@@ -1,7 +1,7 @@
 angular.module('Teach4Tech.Admin.Viewmodels.VideoAdd', [])
   .factory('VideoAddVm', [
-  	'$state', '$timeout', 'binaryServerClient', 'utils', 'binaryClient', '$log', '$http',
-   	function($state, $timeout, binaryServerClient, utils, binaryClient, $log, $http){
+  	'$state', '$timeout', 'utils', 'binaryClient', '$log', '$http',
+   	function($state, $timeout, utils, binaryClient, $log, $http){
   	return function(){
 
   		var self = this;
@@ -24,7 +24,7 @@ angular.module('Teach4Tech.Admin.Viewmodels.VideoAdd', [])
 				    });
     				$video.attr('src', src);
     			});
-    		}, 
+    		},
     		angular.noop,
     		function(data){
     			var status = Math.round(tx += data.rx * 100) + '% complete';
