@@ -1,11 +1,12 @@
-<div class="video-add-page">
-	<h3><span class="glyphicon glyphicon-film"></span>&nbsp;&nbsp;Добавление новой видеозаписи</h3>
+<div class="video-add-page col-lg-12">
+	<h3><span class="glyphicon glyphicon-film"></span>&nbsp;&nbsp;Add New Lesson</h3>
+	<hr/>
 
 	 <section id="main">
 	    <fieldset>
-	        <legend>Перетащи видео сюда</legend>
+	        <legend>Drag Video Here</legend>
 	        <aside id="upload-box" drop-handler="vm.onVideoDropped(data)">
-	            <article id="progress">Бросай видео файл сюда</article>
+	            <article id="progress">Drop It!</article>
 	        </aside>
 	    </fieldset>
 
@@ -16,7 +17,7 @@
 	    </fieldset> -->
 
 	    <fieldset>
-	        <legend>Просмотр видео</legend>
+	        <legend>Video Preview</legend>
 
 	        <video id="video"></video>
 	    </fieldset>
@@ -25,24 +26,24 @@
 	<div class="clearfix"></div>
 	<br>
 	<br>
-	
+
 	<div class="col-lg-6">
 		<form class="form-horizontal" role="form">
 		 <h3>Сохрани видео</h3>
 		 <div class="form-group">
-		    <label for="exampleInputEmail1">Название:</label>
+		    <label for="exampleInputEmail1">Name:</label>
 		    <input type="text" class="form-control" placeholder="Название" ng-model="vm.model.title">
 		  </div>
 
 		  <div class="checkbox">
 		    <label>
-		      <input type="checkbox" ng-model="vm.model.hidden"> Не показывать на сайте ?
+		      <input type="checkbox" ng-model="vm.model.hidden"> Hide ?
 		    </label>
 		  </div>
 		  <div class="clearfix"></div>
 		  <br>
-		  <button type="button" class="btn btn-success" ng-click="vm.save()">Сохранить</button>
-		  <button type="button" class="btn btn-danger" ng-click="vm.remove()">Удалить</button>
+		  <button type="button" class="btn btn-success" ng-click="vm.save()">Save</button>
+		  <button type="button" class="btn btn-danger" ng-click="vm.remove()">Delete</button>
 
 		</form>
 	</div>

@@ -2,20 +2,19 @@ html
   head
     title!=title
     -if (process.env.NODE_ENV == 'production')
-      link(type="text/css", rel="stylesheet", href="/dist/Teach4Tech-vendor.0.0.1.min.css")
       link(type="text/css", rel="stylesheet", href="/dist/Teach4Tech-main.0.0.1.min.css")
       link(type="text/css", rel="stylesheet", href="/styles/fonts.css")
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/styles/kendo.common.min.css")
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/styles/kendo.moonlight.min.css")
     -else
-      <!-- build:css /tmp/combined-vendor.css -->
-      link(type="text/css", rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.css")
-      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.common.css")
-      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.metro.css")
-      link(type="text/css", rel="stylesheet", href="/styles/jsdatagrid-overrides.css")
-      <!-- endbuild -->
       <!-- build:css /tmp/combined-main.css -->
+      link(type="text/css", rel="stylesheet", href="/components/bootstrap/dist/css/bootstrap.css")
+      link(type="text/css", rel="stylesheet", href="/styles/jsdatagrid-overrides.css")
       link(type="text/css", rel="stylesheet", href="/styles/main.css")
       link(type="text/css", rel="stylesheet", href="/styles/fonts.css")
       <!-- endbuild -->
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.common.css")
+      link(type="text/css", rel="stylesheet", href="/components/jsdatagrid/src/styles/kendo.default.css")
     block styles
   body
     include partials/menu
