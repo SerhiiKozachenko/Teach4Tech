@@ -57,4 +57,5 @@ block content
                   &nbsp;
                   span=lesson.author
                   br
-                  video(src='/lessons/playback/#{lesson.id}', controls, preload='none', type='video/mp4; codecs=avc1.42E01E,mp4a.40.2')
+                  video(width='320', height='240', controls, preload='none')
+                    source(src='/lessons/playback/#{lesson.id}', type='video/mp4; codecs=avc1.42E01E,mp4a.40.2')
