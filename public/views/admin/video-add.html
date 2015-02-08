@@ -2,6 +2,10 @@
 	<h3><span class="glyphicon glyphicon-film"></span>&nbsp;&nbsp;Add New Lesson</h3>
 	<hr/>
 
+	<toaster-container toaster-options="{'time-out': 3000, 'close-button':true, 'animation-class': 'toast-top-right'}"></toaster-container>
+
+
+
 	 <div id="main" class="row">
 	    <div class="col-lg-6">
 	        <legend>Add Video</legend>
@@ -44,3 +48,8 @@
 		</form>
 	</div>
 </div>
+
+<!-- Templates -->
+<script type="text/ng-template" id="videoUploadProgress">
+	<p>{{vm.pc}} % done!</p>
+</script>

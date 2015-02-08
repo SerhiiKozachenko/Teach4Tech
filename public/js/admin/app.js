@@ -4,6 +4,8 @@ angular.module('Teach4Tech.Admin', [
   'DragAndDrop',
   'Utils',
   'BinaryClient',
+	'ngAnimate',
+	'toaster',
 	'Teach4Tech.Admin.Controllers',
 	'Teach4Tech.Admin.Viewmodels',
   'Teach4Tech.Admin.Services',

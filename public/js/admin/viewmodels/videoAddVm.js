@@ -1,17 +1,22 @@
 angular.module('Teach4Tech.Admin.Viewmodels.VideoAdd', [])
   .factory('VideoAddVm', [
-  	'$state', '$timeout', 'utils', 'binaryClient', '$log', '$http',
-   	function($state, $timeout, utils, binaryClient, $log, $http){
+  	'$state', '$timeout', 'utils', 'binaryClient', '$log', '$http', 'toaster',
+   	function($state, $timeout, utils, binaryClient, $log, $http, toaster){
   	return function(){
 
   		var self = this;
 
   		this.model = {};
 
+      this.pc = 0;
+
     	this.onVideoDropped = function(data){
     		var file = data.files[0];
     		var tx = 0;
-    		binaryClient.uploadVideo(file)
+        
+        _showLoading();
+
+        binaryClient.uploadVideo(file)
     		.then(function(data){
     			$log.debug('Video uploaded successfully');
     			self.model.fileName = data.fileName;
@@ -27,13 +32,15 @@ angular.module('Teach4Tech.Admin.Viewmodels.VideoAdd', [])
     		},
     		angular.noop,
     		function(data){
-    			var status = Math.round(tx += data.rx * 100) + '% complete';
+          var pc = Math.round(tx += data.rx * 100);
+          self.pc = pc;
+          var status = pc + '% complete';
     			$log.debug('Video uploading: ' + status);
     		})
     		.catch(function(err){
     			var err = err.err;
     			$log.error('Video uploading error: ' + err);
-    		});
+    		}).finally(_hideLoading);
     	};
 
     	this.save = function() {
@@ -46,6 +53,14 @@ angular.module('Teach4Tech.Admin.Viewmodels.VideoAdd', [])
     				debugger
     			});
     	};
+
+      function _showLoading(){
+        toaster.pop('warning', "Uploading...", "videoUploadProgress", null, 'template');
+      };
+
+      function _hideLoading(){
+        toaster.clear();
+      };
 
     	this.remove = function() {
 
