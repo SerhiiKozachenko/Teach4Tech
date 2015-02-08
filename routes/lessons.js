@@ -48,6 +48,10 @@ router.get('/playback/:videoId', _isUserLoggedIn, function(req, res, next){
         var end = positions[1] ? parseInt(positions[1], 10) : total - 1;
         var chunksize = (end - start) + 1;
 
+        console.log('start: '+start);
+        console.log('end: '+end);
+        console.log('chunk: '+chunksize);
+
         res.writeHead(206, {
           "Content-Range": "bytes " + start + "-" + end + "/" + total,
           "Accept-Ranges": "bytes",
